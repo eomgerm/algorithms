@@ -20,10 +20,26 @@ public class Solution {
                 trees[i] = h;
             }
 
-            int answer = 0;
-            for (int h : trees) {
-                int d = max - h;
-                answer += d - d / 3;
+            int two = 0, one = 0;
+            for (int i = 0; i < N; i++) {
+                int diff = max - trees[i];
+
+                two += diff / 2;
+                one += diff % 2;
+            }
+
+            while (two - one > 1) {
+                two--;
+                one += 2;
+            }
+
+            int answer;
+            if (two > one) {
+                answer = two * 2;
+            } else if (one > two) {
+                answer = 2 * one - 1;
+            } else {
+                answer = two + one;
             }
 
             sb.append("#").append(t + 1).append(" ").append(answer).append("\n");
