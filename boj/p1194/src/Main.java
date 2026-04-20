@@ -26,15 +26,12 @@ public class Main {
 
         char[][] map = new char[N][M];
 
-        int maxKey = 0;
         int[] start = {};
         for (int r = 0; r < N; r++) {
             char[] row = br.readLine().toCharArray();
             for (int c = 0; c < M; c++) {
                 map[r][c] = row[c];
-                if (row[c] >= 'A' && row[c] <= 'Z') {
-                    maxKey = Math.max(maxKey, row[c]);
-                } else if (row[c] == '0') {
+                if (row[c] == '0') {
                     start = new int[] {r, c};
                 }
             }
